@@ -97,16 +97,17 @@ function adiciona(contato) {
 function atualiza(contato) {
   console.log('Atualizando contato');
   var objectId = new ObjectID(contato._id);
+  delete contato._id;
   try {
-  mongoClient.connect(
-  'mongodb://127.0.0.1:27017/contatoo', 
-  function(err, db) {
-      if(err) throw err;
-      db.collection('contato').update({_id: objectId}, contato, function(err, contato) {
+    mongoClient.connect(
+    'mongodb://127.0.0.1:27017/contatooh', 
+    function(err, db) {
         if(err) throw err;
-        return contato;
-      });
-  });
+        db.collection('contatos').update({_id: objectId}, {$set: contato}, function(err, contato) {
+          if(err) throw err;
+          return contato;
+        });
+    });
   } catch(err) {
     console.log(err);
     throw err;
