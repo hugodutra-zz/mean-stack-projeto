@@ -6,3 +6,5 @@
 node_modules/
 /contatooh/node_modules
 /contatooh/public/bower_components
+/contatooh/.tmp
+/contatooh/dist

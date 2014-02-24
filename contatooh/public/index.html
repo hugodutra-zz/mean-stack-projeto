@@ -3,17 +3,24 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Contatooh</title>
+		<!-- build:css stylesheets/index.min.css -->
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+		<!-- endbuild -->
 	</head>
 	<body class="container">
 		<div ng-view></div>
 	</body>
+	<!-- build:js javascripts/index.lib.min.js -->
 	<script src="bower_components/angular/angular.js"></script>
 	<script src="bower_components/angular-route/angular-route.js"></script>
 	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<!-- endbuild -->
+
+	<!-- build:js javascripts/index.min.js -->
 	<script src="javascripts/main.js"></script>
 	<script src="javascripts/controller/ContatosController.js"></script>
 	<script src="javascripts/controller/ContatoController.js"></script>
 	<script src="javascripts/service/Contato.js"></script>
+	<!-- endbuild -->	
 </html>
