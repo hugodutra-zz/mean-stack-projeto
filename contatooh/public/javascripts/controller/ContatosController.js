@@ -12,7 +12,7 @@ app.controller('ContatosController', function($scope, Contato) {
 	buscaContatos();
 
 	$scope.remove = function(contato) {
-		Contato.delete({id: contato.id}, function(status) {
+		Contato.delete({id: contato._id}, function(status) {
 			buscaContatos();
 		});
 	};
