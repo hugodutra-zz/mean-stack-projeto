@@ -1,13 +1,13 @@
 var ID_CONTATO_INC = 3;
 
 var contatos = [
-  {_id: 1, nome: 'Funcionário Exemplo 1', email: 'func1@empresa.com.br'},
-  {_id: 2, nome: 'Funcionário Exemplo 2', email: 'func2@empresa.com.br'},
-  {_id: 3, nome: 'Funcionário Exemplo 3', email: 'func3@empresa.com.br'}
+  {_id: 1, nome: 'Contato Exemplo 1', email: 'cont1@empresa.com.br'},
+  {_id: 2, nome: 'Contato Exemplo 2', email: 'cont2@empresa.com.br'},
+  {_id: 3, nome: 'Contato Exemplo 3', email: 'cont3@empresa.com.br'}
 ]; 
 
 exports.listaContatos = function(req, res) {
-  console.log('API: listaFuncionarios');
+  console.log('API: listaContatos');
   res.json(contatos);
 };
 
