@@ -51,9 +51,7 @@ function adiciona(contato) {
   console.log('Salvando contato');
   contato = new Contato(contato);
   contato.save(function(err) {
-     console.log('antes dar pau');
      if (err) return console.error(err);
-     console.log(this);
      return this;
   })
 }

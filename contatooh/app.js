@@ -29,7 +29,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-require('./database/config')
+require('./database/config')('mongodb://localhost/contatooh')
 
 app.get('/contatos', api.listaContatos);
 app.get('/contatos/:id', api.obtemContato);
