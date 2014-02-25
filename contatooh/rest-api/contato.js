@@ -1,63 +1,34 @@
-var mongoClient = require('mongodb').MongoClient
-var ObjectID = require('mongodb').ObjectID;
+var Contato = require('../model/Contato.js').Contato;
 
 exports.listaContatos = function(req, res) {
   console.log('API: listaContatos');
-
-  try {
-    mongoClient.connect('mongodb://127.0.0.1:27017/contatooh', function(err, db) {
-      if(err) throw err
-
-      var collection = db.collection('contatos');
-      collection.find().toArray(function(err, contatos) {
-        res.json(contatos);
-        db.close();
-      });
-    });
-  } catch(err) {
-    res.send(500);
-  }
+  Contato.find({},  function(err, contatos) {
+      if (err) return console.error(err);
+      res.json(contatos);
+  });
 };
 
 exports.obtemContato = function(req, res) {
   console.log('API: obtemContato');
+
   var idContato = req.params.id;
-
-  try {
-    mongoClient.connect('mongodb://127.0.0.1:27017/contatooh', function(err, db) {
-      if(err) throw err
-
-      var collection = db.collection('contatos');
-      var cursor = collection.find({_id: new ObjectID(idContato)});
-      cursor.nextObject(function(err, contato) {
-        if(err) throw err
-        res.json(contato);
-        db.close();
-      });
-    });
-  } catch(err) {
-    console.log(err);
-    res.send(500);
-  }
+  Contato.findById(idContato,  function(err, contato) {
+      if (err) {
+        res.send(500);
+        return console.error(err);
+      }
+      res.json(contato);
+  });
 };
 
 exports.removeContato = function(req, res) {
   console.log('API: removeContato')
-  var idContato = req.params.id;
 
-  try {
-    mongoClient.connect('mongodb://127.0.0.1:27017/contatooh', function(err, db) {
-      if(err) throw err;
-      var collection = db.collection('contatos');
-      collection.remove({_id: new ObjectID(idContato)}, function() {
-        if(err) throw err;
-         res.send(204);
-      });
-    });
-  } catch(err) {
-      console.log(err);
-      res.send(500);
-  }
+  var idContato = req.params.id;
+  Contato.findByIdAndRemove(idContato, function() {
+      res.send(200);
+  });
+  
 };
 
 exports.salvaContato = function(req, res) {
@@ -78,38 +49,21 @@ exports.salvaContato = function(req, res) {
 
 function adiciona(contato) {
   console.log('Salvando contato');
-  try {
-    mongoClient.connect(
-    'mongodb://127.0.0.1:27017/contatooh', 
-    function(err, db) {
-        if(err) throw err;
-        var id = db.collection('contatos').insert(contato, function(err, contato) {
-          if(err) throw err;
-           return id;
-        })
-    });
-  } catch(err) {
-    console.log(err);
-    res.send(500);
-  }
+  contato = new Contato(contato);
+  contato.save(function(err) {
+     console.log('antes dar pau');
+     if (err) return console.error(err);
+     console.log(this);
+     return this;
+  })
 }
 
 function atualiza(contato) {
   console.log('Atualizando contato');
-  var objectId = new ObjectID(contato._id);
+  var contatoId = contato._id;
   delete contato._id;
-  try {
-    mongoClient.connect(
-    'mongodb://127.0.0.1:27017/contatooh', 
-    function(err, db) {
-        if(err) throw err;
-        db.collection('contatos').update({_id: objectId}, {$set: contato}, function(err, contato) {
-          if(err) throw err;
-          return contato;
-        });
-    });
-  } catch(err) {
-    console.log(err);
-    throw err;
-  }
+  Contato.findByIdAndUpdate(contatoId, contato, function(err) {
+    if (err) return console.error(err);
+    return contato;
+  });
 }

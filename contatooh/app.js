@@ -29,6 +29,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+require('./database/config')
+
 app.get('/contatos', api.listaContatos);
 app.get('/contatos/:id', api.obtemContato);
 app.delete('/contatos/:id', api.removeContato);
