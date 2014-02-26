@@ -6,7 +6,7 @@
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
-var api = require('./rest-api/contato');
+var contato = require('./routes/contato');
 var http = require('http');
 var path = require('path');
 
@@ -44,12 +44,12 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-require('./database/config')('mongodb://localhost/contatooh')
+require('./database')('mongodb://localhost/contatooh')
 
-app.get('/contatos', api.listaContatos);
-app.get('/contatos/:id', api.obtemContato);
-app.delete('/contatos/:id', api.removeContato);
-app.post('/contatos', api.salvaContato);
+app.get('/contatos', contato.listaContatos);
+app.get('/contatos/:id', contato.obtemContato);
+app.delete('/contatos/:id', contato.removeContato);
+app.post('/contatos', contato.salvaContato);
 
 
 http.createServer(app).listen(app.get('port'), function(){

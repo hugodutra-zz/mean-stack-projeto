@@ -5,6 +5,6 @@
 .DS_Store?
 node_modules/
 /contatooh/node_modules
-/contatooh/public/bower_components
+/contatooh/public/vendor
 /contatooh/.tmp
 /contatooh/dist
