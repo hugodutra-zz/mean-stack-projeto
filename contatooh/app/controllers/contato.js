@@ -1,4 +1,4 @@
-var Contato = require('../model/Contato.js').Contato;
+var Contato = require('../models/Contato.js').Contato;
 
 exports.listaContatos = function(req, res) {
   console.log('API: listaContatos');
