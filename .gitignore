@@ -4,7 +4,7 @@
 .DS_Store
 .DS_Store?
 node_modules/
-/contatooh/node_modules
-/contatooh/public/vendor
-/contatooh/.tmp
-/contatooh/dist
+node_modules
+public/vendor
+.tmp
+dist
