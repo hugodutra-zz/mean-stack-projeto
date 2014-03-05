@@ -27,6 +27,7 @@ app.use(express.basicAuth(function(user, pass, callback) {
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'app/views'));
+app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
@@ -43,6 +44,8 @@ if ('development' == app.get('env')) {
 
 require('./config/database')('mongodb://localhost/contatooh')
 
+require('./app/routes/index')(app);
+require('./app/routes/partials')(app);
 require('./app/routes/contato')(app);
 
 http.createServer(app).listen(app.get('port'), function(){

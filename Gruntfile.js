@@ -16,24 +16,25 @@ module.exports = function(grunt) {
 				src: ['dist']		
 			}, 
 			garbage: {
-				src: ['dist/public/bower_components',
+				src: ['dist/public/vendor',
 					  'dist/public/javascripts/main.js',
-					  'dist/public/javascripts/controller',
-					  'dist/public/javascripts/service']
+					  'dist/public/javascripts/controllers',
+					  'dist/public/javascripts/services']
 			}
 		}, 
 
 		usemin: {
 
-			html: ['dist/public/**/*.html']
+			html: ['dist/app/views/**/*.ejs']
 		}, 
 
 		useminPrepare: {
 			options: {
+				root: 'dist/public',
 				dest: 'dist/public'
 			},
 
-			html: ['dist/public/**/*.html']
+			html: ['dist/app/views/**/*.ejs']
 		}, 
 
 		ngmin: {
