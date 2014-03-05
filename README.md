@@ -1,10 +1,9 @@
 mean-stack-projeto
 ==================
-build:
+How to build:
 
-cd contatooh
 npm install
 bower install
-node app
+node server
 
-localhost:3000
+http://localhost:3000
