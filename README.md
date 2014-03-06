@@ -6,6 +6,10 @@ npm install
 
 bower install
 
-node server
+grunt
+
+cd dist
+
+node app
 
 http://localhost:3000
