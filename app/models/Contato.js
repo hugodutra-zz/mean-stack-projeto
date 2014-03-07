@@ -1,8 +1,10 @@
-var Mongoose = require('mongoose');
 
-var ContatoSchema = new Mongoose.Schema({
-  nome: String,
-  email: String
-});
+module.exports = function(app) {
 
-exports.Contato = Mongoose.model('Contato', ContatoSchema);
+	var schema = new db.Schema({
+	  nome: String,
+	  email: String
+	});
+	
+	return db.model('contato', schema);
+}

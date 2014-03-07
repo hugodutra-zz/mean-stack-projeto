@@ -16,7 +16,7 @@ app.use(express.cookieParser());
 app.use(express.session({secret: "This is a secret"}));
 
 // Authenticação simples
-app.use(express.basicAuth('teste','teste'));
+//app.use(express.basicAuth('teste','teste'));
 /*
 // Autenticação mais flexível
 app.use(express.basicAuth(function(user, pass, callback) {
@@ -43,18 +43,19 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-require('./config/database')('mongodb://localhost/contatooh')
+global.db = require('./config/database')('mongodb://localhost/contatooh');
 
-load('app/models')
-	.then('app/controllers')
-	.then('app/routes')
-	.then('app/partials')
+load('models',  {cwd: 'app'})
+	.then('controllers',  {cwd: 'app'})
+	.then('partials',  {cwd: 'app'})
+	.then('routes',  {cwd: 'app'})
 	.into(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
+/*
 function requireAuthentication() {
 	console.log('chamou');
 }
@@ -62,3 +63,4 @@ function requireAuthentication() {
 function loadUser() {
 	console.log('chamou');
 }
+*/
