@@ -3,6 +3,7 @@
  * Module dependencies.
  */
 
+var load = require('express-load');
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -44,9 +45,11 @@ if ('development' == app.get('env')) {
 
 require('./config/database')('mongodb://localhost/contatooh')
 
-require('./app/routes/index')(app);
-require('./app/routes/partials')(app);
-require('./app/routes/contato')(app);
+load('app/models')
+	.then('app/controllers')
+	.then('app/routes')
+	.then('app/partials')
+	.into(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
