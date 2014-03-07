@@ -1,8 +1,8 @@
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
 
-var GITHUB_CLIENT_ID = ''
-var GITHUB_CLIENT_SECRET = ''
+var GITHUB_CLIENT_ID = 'eef11cf3ac04a796655e'
+var GITHUB_CLIENT_SECRET = '883e9aa1cfe795c85f16fa0edd44fa611e7865df'
 var GITHUB_CALLBACK_URL = 'http://localhost:3000/auth/github/callback'
 
 module.exports = function(app) {

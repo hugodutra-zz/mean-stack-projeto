@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function(app) {
 	var contato = app.controllers.contato;
 	
