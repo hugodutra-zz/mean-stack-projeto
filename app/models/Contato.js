@@ -7,4 +7,4 @@ module.exports = function(app) {
 	});
 	
 	return db.model('contato', schema);
-}
+};

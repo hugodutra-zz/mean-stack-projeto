@@ -4,4 +4,4 @@ module.exports = function(app) {
 		res.render('index', {usuario: req.user.username});
 	};
 	return controller;
-}
+};
