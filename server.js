@@ -46,9 +46,9 @@ if ('development' == app.get('env')) {
 global.db = require('./config/database')('mongodb://localhost/contatooh');
 
 load('models',  {cwd: 'app'})
-	.then('controllers',  {cwd: 'app'})
-	.then('partials',  {cwd: 'app'})
-	.then('routes',  {cwd: 'app'})
+	.then('controllers')
+	.then('partials')
+	.then('routes')
 	.into(app);
 
 http.createServer(app).listen(app.get('port'), function(){
