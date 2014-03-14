@@ -1,5 +1,5 @@
-global.db = require('./config/database')();
 var http = require('http');
+global.db = require('./config/database')();
 var passport = require('./config/passport')();
 var app = require('./config/express')(passport);
 
