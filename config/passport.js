@@ -5,13 +5,7 @@ var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET
 var GITHUB_CALLBACK_URL = 'http://localhost:3000/auth/github/callback'
 
-module.exports = function(app) {
-
-	// sempre antes da configuração do
-	app.use(passport.initialize());
-	app.use(passport.session());
-
-	app.use(app.router);
+module.exports = function() {
 
 	passport.use(new GitHubStrategy({
 		clientID: GITHUB_CLIENT_ID,
@@ -30,4 +24,6 @@ module.exports = function(app) {
 	passport.deserializeUser(function(obj, done) {
 	  done(null, obj);
 	});
+
+	return passport;
 };

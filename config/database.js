@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var uri = 'mongodb://localhost/contatooh';
 
-module.exports = function(uri) {
+module.exports = function() {
 	mongoose.connect(uri);
 
 	mongoose.connection.on('connected', function () {
