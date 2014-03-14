@@ -12,7 +12,7 @@ Mean Stack sample project
 ### ATTENTION: 
 
 Now the application uses github account for authentication.
-YThere are two missing configurations that you need to provide 
+There are two missing configurations that you need to provide 
 in order to app work.
 
 * First, create a new github application at `https://github.com/settings/applications`
@@ -26,8 +26,8 @@ in order to app work.
     * `GITHUB_CLIENT_SECRET = 'your Client Secret'`
 
 * optional: you can create a script to to help set this variables:
-  
-   #!/bin/bash  
+
+    #!/bin/bash  
     export GITHUB_CLIENT_ID=your clientId  
     export GITHUB_CLIENT_SECRET=yoir Client Secret  
     node server
