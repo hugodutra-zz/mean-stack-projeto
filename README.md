@@ -10,13 +10,14 @@ grunt
 
 cd dist
 
-node app
+node server
 
 http://localhost:3000
 
+ATTENTION: 
 
 Now the application uses github account for authentication.
-There are two missing configurations that you need to provide 
+YThere are two missing configurations that you need to provide 
 in order to app work.
 
 First, create a new github application at
@@ -31,8 +32,15 @@ Authorization callback URL: http://localhost:3000/auth/github/callback
 
 After saving, on the top right will be your 'Client Id' and yout 'Client Secret'.
 
-Edit server.js and alter the variables:
+Set the enviroment variables before running de server: 
 
-var GITHUB_CLIENT_ID = 'you clientId'
-var GITHUB_CLIENT_SECRET = 'you Client Secret'
+GITHUB_CLIENT_ID = 'your clientId'
+GITHUB_CLIENT_SECRET = 'your Client Secret'
+
+You can create a script to automate this processe. Here is an example:
+
+#!/bin/bash
+export GITHUB_CLIENT_ID=your clientId
+export GITHUB_CLIENT_SECRET=yoir Client Secret
+node server
 
