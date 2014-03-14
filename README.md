@@ -1,46 +1,33 @@
-mean-stack-projeto
+Mean Stack sample project
 ==================
-How to build:
+##How to build:
 
-npm install
+* npm install
+* bower install
+* grunt
+* cd dist
+* node server
+* http://localhost:3000
 
-bower install
-
-grunt
-
-cd dist
-
-node server
-
-http://localhost:3000
-
-ATTENTION: 
+### ATTENTION: 
 
 Now the application uses github account for authentication.
 YThere are two missing configurations that you need to provide 
 in order to app work.
 
-First, create a new github application at
+* First, create a new github application at `https://github.com/settings/applications`
 
-https://github.com/settings/applications
+* Fill the fields: `Homepage URL: http://localhost:3000`
 
-Fill the fields:
+* Authorization callback URL: `http://localhost:3000/auth/github/callback`
 
-Homepage URL: http://localhost:3000
+* Set the enviroment variables before running de server:     
+    * `GITHUB_CLIENT_ID = 'your clientId'`
+    * `GITHUB_CLIENT_SECRET = 'your Client Secret'`
 
-Authorization callback URL: http://localhost:3000/auth/github/callback
-
-After saving, on the top right will be your 'Client Id' and yout 'Client Secret'.
-
-Set the enviroment variables before running de server: 
-
-GITHUB_CLIENT_ID = 'your clientId'
-GITHUB_CLIENT_SECRET = 'your Client Secret'
-
-You can create a script to automate this processe. Here is an example:
-
-#!/bin/bash
-export GITHUB_CLIENT_ID=your clientId
-export GITHUB_CLIENT_SECRET=yoir Client Secret
-node server
-
+* optional: you can create a script to to help set this variables:
+  
+   #!/bin/bash  
+    export GITHUB_CLIENT_ID=your clientId  
+    export GITHUB_CLIENT_SECRET=yoir Client Secret  
+    node server
